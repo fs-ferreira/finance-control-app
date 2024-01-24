@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+ body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #f8f9fa !important;
+}
+
+.p-panel .p-panel-header {
+  background-color: white !important;
+}
+
+.actions-col {
+  text-align: center !important;
+}

@@ -2,9 +2,13 @@
   cursor: pointer;
 }
 
-::ng-deep .p-menuitem-link-active {
+::ng-deep p-menubar .p-menuitem-link-active {
   border-bottom: 0.3vh inset #50b4ff !important;
   border-radius: 0px !important;
   -webkit-border-radius: 0px !important;
   -moz-border-radius: 0px !important;
+}
+
+::ng-deep .p-menubar {
+  background-color: white !important;
 }

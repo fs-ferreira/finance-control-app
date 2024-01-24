@@ -15,13 +15,16 @@ export class AppComponent implements OnInit {
     this.items = [
       {
         label: 'Relatórios',
-        routerLink:'reports'
+        routerLink: 'reports',
+      },
+      {
+        label: 'Lançamentos',
+        routerLink: 'entries',
       },
       {
         label: 'Categorias',
-        routerLink:'categories'
+        routerLink: 'categories',
       },
     ];
   }
-
 }
