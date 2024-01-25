@@ -1,1 +1,77 @@
-<p>category-form works!</p>
+<p-panel [header]="title">
+  <ng-template pTemplate="icons">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-arrow-left"
+      class="p-button-rounded p-button-text mr-2"
+      [routerLink]="['/categories']"
+    ></button>
+  </ng-template>
+
+  <form [formGroup]="categoryForm" (submit)="submitForm()" class="mt-3">
+    <div class="formgrid grid">
+      <div class="field col-12 md:col-2">
+        <label for="id" class="required">Código</label>
+        <input
+          id="id"
+          formControlName="id"
+          type="number"
+          min="0"
+          step="1"
+          pInputText
+        />
+
+        <div
+          class="text-danger"
+          *ngIf="categoryForm.get('id').invalid && categoryForm.get('id').dirty"
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col">
+        <label for="name" class="required">Nome</label>
+        <input id="name" formControlName="name" type="text" pInputText />
+        <div
+          class="text-danger"
+          *ngIf="
+            categoryForm.get('name').invalid && categoryForm.get('name').dirty
+          "
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col-12">
+        <label for="desc">Descrição</label>
+        <textarea
+          id="desc"
+          formControlName="desc"
+          type="text"
+          rows="3"
+          pInputTextarea
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="flex justify-content-end p-1">
+      <button
+        pButton
+        pRipple
+        type="button"
+        class="mx-1 p-button-secondary"
+        label="Limpar"
+        (click)="onReset()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        class="mx-1"
+        label="Salvar"
+        [disabled]="isSubmiting || categoryForm.invalid"
+        type="submit"
+      ></button>
+    </div>
+  </form>
+</p-panel>

@@ -1,14 +1,18 @@
-import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenubarModule } from 'primeng/menubar';
-import { TabViewModule } from 'primeng/tabview';
+import { Component, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmationService } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { PanelModule } from 'primeng/panel';
-import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MenubarModule } from 'primeng/menubar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @Component({
   template: `<router-outlet></router-outlet> `,
@@ -26,6 +30,11 @@ export class EmptyComponent {}
     TableModule,
     ButtonModule,
     ConfirmDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    InputTextareaModule,
+    OverlayPanelModule,
   ],
   providers: [ConfirmationService],
   exports: [
@@ -37,6 +46,11 @@ export class EmptyComponent {}
     TableModule,
     ButtonModule,
     ConfirmDialogModule,
+    FormsModule,
+    InputTextModule,
+    InputTextareaModule,
+    OverlayPanelModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

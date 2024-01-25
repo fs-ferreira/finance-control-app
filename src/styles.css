@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
- body {
+body {
   margin: 0 !important;
   padding: 0 !important;
   background-color: #f8f9fa !important;
@@ -11,4 +11,20 @@
 
 .actions-col {
   text-align: center !important;
+}
+
+.p-inputtext {
+  width: 100% !important;
+}
+
+.required::after {
+  margin-left: 3px;
+  content: "*";
+  color: red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

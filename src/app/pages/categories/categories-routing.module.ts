@@ -11,7 +11,7 @@ const routes: Routes = [
     path: 'categories',
     component: EmptyComponent,
     data: {
-      breadcrumb: 'Listagem de categorias',
+      breadcrumb: 'Lista de categorias',
     },
     children: [
       {

@@ -10,6 +10,7 @@ import { CategoryService } from 'src/app/core/services/category.service';
 })
 export class CategoryListComponent implements OnInit {
   public categories: Category[];
+  public currentCategory: Category;
 
   constructor(
     private _service: CategoryService,
@@ -23,7 +24,7 @@ export class CategoryListComponent implements OnInit {
     );
   }
 
-  deleteCategory(id: number) {
+  public deleteCategory(id: number) {
     this._confirmationService.confirm({
       message: 'Deseja realmente excluir esse item?',
       acceptLabel: 'Sim',

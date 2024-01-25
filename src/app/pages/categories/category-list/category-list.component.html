@@ -33,13 +33,6 @@
             pButton
             pRipple
             type="button"
-            icon="pi pi-eye"
-            class="p-button-rounded p-button-text"
-          ></button>
-          <button
-            pButton
-            pRipple
-            type="button"
             icon="pi pi-pencil"
             class="p-button-rounded p-button-text"
             [routerLink]="[category.id]"
@@ -61,4 +54,5 @@
 <p-confirmDialog
   header="Confirme a exclusão"
   [style]="{ width: '50vw' }"
+  rejectButtonStyleClass="p-button-secondary"
 ></p-confirmDialog>
