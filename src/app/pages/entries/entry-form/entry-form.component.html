@@ -1,1 +1,154 @@
-<p>entry-form works!</p>
+<p-panel [header]="title">
+  <ng-template pTemplate="icons">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-arrow-left"
+      class="p-button-rounded p-button-text mr-2"
+      [routerLink]="['/entries']"
+    ></button>
+  </ng-template>
+
+  <form [formGroup]="entryForm" (submit)="submitForm()" class="mt-3">
+    <div class="formgrid grid">
+      <div class="field col-12 md:col-2">
+        <label for="id" class="required">Código</label>
+        <input
+          id="id"
+          formControlName="id"
+          type="number"
+          min="0"
+          step="1"
+          pInputText
+        />
+
+        <div
+          class="text-danger"
+          *ngIf="entryForm.get('id').invalid && entryForm.get('id').dirty"
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-10">
+        <label for="name" class="required">Nome</label>
+        <input id="name" formControlName="name" type="text" pInputText />
+        <div
+          class="text-danger"
+          *ngIf="entryForm.get('name').invalid && entryForm.get('name').dirty"
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-6">
+        <label for="categoryId" class="required">Categoria</label>
+        <p-dropdown
+          [options]="categoryList"
+          formControlName="category"
+          placeholder="Selecione a categoria do lançamento"
+          optionLabel="name"
+          dataKey="id"
+          [showClear]="true"
+        ></p-dropdown>
+        <div
+          class="text-danger"
+          *ngIf="
+            entryForm.get('category').invalid && entryForm.get('category').dirty
+          "
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-6">
+        <label for="date" class="required">Data do lançamento</label>
+        <p-calendar
+          inputId="date"
+          formControlName="date"
+          dateFormat="dd/mm/yy"
+          [locale]="ptBR"
+          placeholder="31/12/1900"
+          [showIcon]="true"
+          [showButtonBar]="true"
+        ></p-calendar>
+        <div
+          class="text-danger"
+          *ngIf="entryForm.get('date').invalid && entryForm.get('date').dirty"
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col-12">
+        <label for="desc">Descrição</label>
+        <textarea
+          id="desc"
+          formControlName="desc"
+          type="text"
+          rows="3"
+          pInputTextarea
+        ></textarea>
+      </div>
+      <div class="field col-12 md:col-5">
+        <label for="type" class="required">Tipo</label>
+        <p-dropdown
+          [options]="entryTypes"
+          formControlName="type"
+          placeholder="Selecione o tipo do lançamento"
+          optionLabel="name"
+          dataKey="value"
+          [showClear]="true"
+        ></p-dropdown>
+        <div
+          class="text-danger"
+          *ngIf="entryForm.get('type').invalid && entryForm.get('type').dirty"
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-5">
+        <label for="amount" class="required">Valor</label>
+        <p-inputNumber
+          inputId="amount"
+          formControlName="amount"
+          placeholder="00,00"
+          mode="currency"
+          locale="pt-BR"
+          currency="BRL"
+        ></p-inputNumber>
+        <div
+          class="text-danger"
+          *ngIf="
+            entryForm.get('amount').invalid && entryForm.get('amount').dirty
+          "
+        >
+          <span>Campo obrigatório</span>
+        </div>
+      </div>
+      <div class="field col-12 md:col-2">
+        <label for="paid">Pago</label><br />
+        <div class="mt-1">
+          <p-inputSwitch inputId="paid" formControlName="paid"></p-inputSwitch>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-content-end p-1">
+      <button
+        pButton
+        pRipple
+        type="button"
+        class="mx-1 p-button-secondary"
+        label="Limpar"
+        (click)="onReset()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        class="mx-1"
+        label="Salvar"
+        [disabled]="isSubmiting || entryForm.invalid"
+        type="submit"
+      ></button>
+    </div>
+  </form>
+</p-panel>

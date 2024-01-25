@@ -15,7 +15,13 @@ import { TabViewModule } from 'primeng/tabview';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BlockUIModule } from 'primeng/blockui';
-import {MegaMenuModule} from 'primeng/megamenu';
+import { MegaMenuModule } from 'primeng/megamenu';
+import { CalendarModule } from 'primeng/calendar';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { DropdownModule } from 'primeng/dropdown';
+import {InputMaskModule} from 'primeng/inputmask';
+import {InputNumberModule} from 'primeng/inputnumber';
+import { IMaskModule } from 'angular-imask';
 
 @Component({
   template: `<router-outlet></router-outlet> `,
@@ -24,24 +30,7 @@ export class EmptyComponent {}
 
 @NgModule({
   declarations: [BreadcrumbComponent, EmptyComponent],
-  imports: [
-    CommonModule,
-    MenubarModule,
-    TabViewModule,
-    BreadcrumbModule,
-    PanelModule,
-    TableModule,
-    ButtonModule,
-    ConfirmDialogModule,
-    FormsModule,
-    InputTextModule,
-    InputTextareaModule,
-    OverlayPanelModule,
-    ReactiveFormsModule,
-    ProgressSpinnerModule,
-    BlockUIModule,
-    MegaMenuModule
-  ],
+  imports: [CommonModule, MenubarModule, BreadcrumbModule],
   providers: [ConfirmationService],
   exports: [
     MenubarModule,
@@ -59,7 +48,13 @@ export class EmptyComponent {}
     ReactiveFormsModule,
     ProgressSpinnerModule,
     BlockUIModule,
-    MegaMenuModule
+    MegaMenuModule,
+    CalendarModule,
+    InputSwitchModule,
+    DropdownModule,
+    InputMaskModule,
+    InputNumberModule,
+    IMaskModule
   ],
 })
 export class SharedModule {}

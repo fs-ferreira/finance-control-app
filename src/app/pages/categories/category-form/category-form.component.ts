@@ -116,7 +116,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
         showSuccessMessage();
         this._router.navigate(['categories']);
       },
-      (error) => showErrorMessage
+      (error) => showErrorMessage()
     );
   }
 
@@ -129,11 +129,9 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     this._service.update(category).subscribe(
       (resp) => {
         showSuccessMessage();
-        console.warn('aqui');
-
         this._router.navigate(['categories']);
       },
-      (error) => showErrorMessage
+      (error) => showErrorMessage()
     );
   }
 }

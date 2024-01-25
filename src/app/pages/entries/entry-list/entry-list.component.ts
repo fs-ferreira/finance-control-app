@@ -10,6 +10,7 @@ import { EntryService } from 'src/app/core/services/entry.service';
 })
 export class EntryListComponent implements OnInit {
   public entries: Entry[];
+  public alignRight = 'text-right';
 
   constructor(
     private _service: EntryService,
@@ -23,8 +24,8 @@ export class EntryListComponent implements OnInit {
     );
   }
 
-  public checkEntryType(row: Entry){
-    return row.type === EntryType.expense ? 'text-danger' : 'text-success'
+  public checkEntryType(row: Entry) {
+    return row.type === EntryType.expense ? 'text-danger' : 'text-success';
   }
 
   public deleteEntry(id: number) {
