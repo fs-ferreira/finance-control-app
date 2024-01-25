@@ -13,6 +13,10 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { LoadingStateComponent } from './loading-state/loading-state.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { BlockUIModule } from 'primeng/blockui';
+import {MegaMenuModule} from 'primeng/megamenu';
 
 @Component({
   template: `<router-outlet></router-outlet> `,
@@ -20,7 +24,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 export class EmptyComponent {}
 
 @NgModule({
-  declarations: [BreadcrumbComponent, EmptyComponent],
+  declarations: [BreadcrumbComponent, EmptyComponent, LoadingStateComponent],
   imports: [
     CommonModule,
     MenubarModule,
@@ -31,10 +35,13 @@ export class EmptyComponent {}
     ButtonModule,
     ConfirmDialogModule,
     FormsModule,
-    ReactiveFormsModule,
     InputTextModule,
     InputTextareaModule,
     OverlayPanelModule,
+    ReactiveFormsModule,
+    ProgressSpinnerModule,
+    BlockUIModule,
+    MegaMenuModule
   ],
   providers: [ConfirmationService],
   exports: [
@@ -51,6 +58,10 @@ export class EmptyComponent {}
     InputTextareaModule,
     OverlayPanelModule,
     ReactiveFormsModule,
+    ProgressSpinnerModule,
+    BlockUIModule,
+    LoadingStateComponent,
+    MegaMenuModule
   ],
 })
 export class SharedModule {}
