@@ -13,7 +13,6 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
-import { LoadingStateComponent } from './loading-state/loading-state.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BlockUIModule } from 'primeng/blockui';
 import {MegaMenuModule} from 'primeng/megamenu';
@@ -24,7 +23,7 @@ import {MegaMenuModule} from 'primeng/megamenu';
 export class EmptyComponent {}
 
 @NgModule({
-  declarations: [BreadcrumbComponent, EmptyComponent, LoadingStateComponent],
+  declarations: [BreadcrumbComponent, EmptyComponent],
   imports: [
     CommonModule,
     MenubarModule,
@@ -60,7 +59,6 @@ export class EmptyComponent {}
     ReactiveFormsModule,
     ProgressSpinnerModule,
     BlockUIModule,
-    LoadingStateComponent,
     MegaMenuModule
   ],
 })

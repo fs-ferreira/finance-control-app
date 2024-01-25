@@ -1,5 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Category } from './core/models/category.model';
+import { Entry, EntryType } from './core/models/entry.model';
 
 export class InMemoryDatabase implements InMemoryDbService {
   createDb() {
@@ -11,6 +12,154 @@ export class InMemoryDatabase implements InMemoryDbService {
       { id: 5, name: 'Freelas', desc: 'Trabalhos como freelancer' },
     ];
 
-    return { categories };
+    const entries: Entry[] = [
+      {
+        id: 1,
+        name: 'Gás de Cozinha',
+        category: categories[0],
+        paid: true,
+        date: '14/10/2018',
+        amount: '70,80',
+        type: EntryType.expense,
+        desc: 'Qualquer descrição para essa despesa',
+      } as Entry,
+      {
+        id: 2,
+        name: 'Suplementos',
+        category: categories[1],
+        paid: false,
+        date: '14/10/2018',
+        amount: '15,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 3,
+        name: 'Salário na Empresa X',
+        category: categories[3],
+        paid: true,
+        date: '15/10/2018',
+        amount: '4405,49',
+        type: EntryType.revenue,
+      } as Entry,
+      {
+        id: 4,
+        name: 'Aluguel de Filme',
+        category: categories[2],
+        paid: true,
+        date: '16/10/2018',
+        amount: '15,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 5,
+        name: 'Suplementos',
+        category: categories[1],
+        paid: true,
+        date: '17/10/2018',
+        amount: '30,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 6,
+        name: 'Video Game da Filha',
+        category: categories[2],
+        paid: false,
+        date: '17/10/2018',
+        amount: '15,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 11,
+        name: 'Uber',
+        category: categories[1],
+        paid: true,
+        date: '17/10/2018',
+        amount: '30,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 12,
+        name: 'Aluguel',
+        category: categories[2],
+        paid: false,
+        date: '23/10/2018',
+        amount: '15,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 13,
+        name: 'Gás de Cozinha',
+        category: categories[1],
+        paid: false,
+        date: '25/10/2018',
+        amount: '30,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 14,
+        name: 'Pagamento Pelo Projeto XYZ',
+        category: categories[4],
+        paid: true,
+        date: '25/10/2018',
+        amount: '2980,00',
+        type: EntryType.revenue,
+      } as Entry,
+      {
+        id: 19,
+        name: 'Aluguel de Filme',
+        category: categories[2],
+        paid: false,
+        date: '07/11/2018',
+        amount: '15,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 21,
+        name: 'Video Game da Filha',
+        category: categories[1],
+        paid: true,
+        date: '17/11/2018',
+        amount: '30,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 22,
+        name: 'Cinema',
+        category: categories[2],
+        paid: true,
+        date: '18/11/2018',
+        amount: '15,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 23,
+        name: 'Jiu Jitsu',
+        category: categories[1],
+        paid: false,
+        date: '21/11/2018',
+        amount: '130,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 44,
+        name: 'Uber',
+        category: categories[2],
+        paid: true,
+        date: '28/11/2018',
+        amount: '15,00',
+        type: EntryType.expense,
+      } as Entry,
+      {
+        id: 55,
+        name: 'Cinema',
+        category: categories[1],
+        paid: false,
+        date: '28/11/2018',
+        amount: '30,00',
+        type: EntryType.expense,
+      } as Entry,
+    ];
+
+    return { categories, entries };
   }
 }
