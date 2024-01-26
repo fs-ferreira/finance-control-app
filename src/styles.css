@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #f8f9fa !important;
+}
+
+.p-panel .p-panel-header {
+  background-color: white !important;
+}
+
+.actions-col {
+  text-align: center !important;
+}
+
+.p-inputtext,
+.p-inputnumber,
+.p-dropdown,
+.p-calendar {
+  width: 100% !important;
+}
+
+.required::after {
+  margin-left: 3px;
+  content: "*";
+  color: red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::placeholder,
+.p-placeholder {
+  color: #adb5bd !important;
+  opacity: 1 !important;
+}
+
+::-ms-input-placeholder {
+  color: #adb5bd !important;
+}
+
+@media screen and (max-width: 750px) {
+  td,
+  td.text-right,
+  th {
+    text-align: center !important;
+  }
+}
