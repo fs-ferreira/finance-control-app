@@ -25,6 +25,6 @@ export class Entry extends BaseResourceModel {
 }
 
 export enum EntryType {
-  expense = 'Despesa',
-  revenue = 'Receita',
+   'Despesa' = 'expense',
+   'Receita' = 'revenue',
 }
