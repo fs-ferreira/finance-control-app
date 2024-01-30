@@ -10,7 +10,7 @@
     ></button>
   </ng-template>
 
-  <form [formGroup]="entryForm" (submit)="submitForm()" class="mt-3">
+  <form [formGroup]="resourceForm" (submit)="submitForm()" class="mt-3">
     <div class="formgrid grid">
       <div class="field col-12 md:col-2">
         <label for="id" class="required">Código</label>
@@ -25,7 +25,7 @@
 
         <div
           class="text-danger"
-          *ngIf="entryForm.get('id').invalid && entryForm.get('id').dirty"
+          *ngIf="resourceForm.get('id').invalid && resourceForm.get('id').dirty"
         >
           <span>Campo obrigatório</span>
         </div>
@@ -35,7 +35,7 @@
         <input id="name" formControlName="name" type="text" pInputText />
         <div
           class="text-danger"
-          *ngIf="entryForm.get('name').invalid && entryForm.get('name').dirty"
+          *ngIf="resourceForm.get('name').invalid && resourceForm.get('name').dirty"
         >
           <span>Campo obrigatório</span>
         </div>
@@ -53,7 +53,7 @@
         <div
           class="text-danger"
           *ngIf="
-            entryForm.get('category').invalid && entryForm.get('category').dirty
+            resourceForm.get('category').invalid && resourceForm.get('category').dirty
           "
         >
           <span>Campo obrigatório</span>
@@ -72,7 +72,7 @@
         ></p-calendar>
         <div
           class="text-danger"
-          *ngIf="entryForm.get('date').invalid && entryForm.get('date').dirty"
+          *ngIf="resourceForm.get('date').invalid && resourceForm.get('date').dirty"
         >
           <span>Campo obrigatório</span>
         </div>
@@ -99,7 +99,7 @@
         ></p-dropdown>
         <div
           class="text-danger"
-          *ngIf="entryForm.get('type').invalid && entryForm.get('type').dirty"
+          *ngIf="resourceForm.get('type').invalid && resourceForm.get('type').dirty"
         >
           <span>Campo obrigatório</span>
         </div>
@@ -117,7 +117,7 @@
         <div
           class="text-danger"
           *ngIf="
-            entryForm.get('amount').invalid && entryForm.get('amount').dirty
+            resourceForm.get('amount').invalid && resourceForm.get('amount').dirty
           "
         >
           <span>Campo obrigatório</span>
@@ -146,7 +146,7 @@
         type="button"
         class="mx-1"
         label="Salvar"
-        [disabled]="isSubmiting || entryForm.invalid"
+        [disabled]="isSubmiting || resourceForm.invalid"
         type="submit"
       ></button>
     </div>

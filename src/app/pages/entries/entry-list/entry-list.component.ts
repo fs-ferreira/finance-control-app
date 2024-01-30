@@ -25,7 +25,7 @@ export class EntryListComponent implements OnInit {
   }
 
   public checkEntryType(row: Entry) {
-    return row.type === EntryType.expense ? 'text-danger' : 'text-success';
+    return row.type === EntryType.Despesa ? 'text-danger' : 'text-success';
   }
 
   public deleteEntry(id: number) {
