@@ -5,7 +5,7 @@ import { Category } from 'src/app/core/models/category.model';
 import { Entry, EntryType } from 'src/app/core/models/entry.model';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { EntryService } from 'src/app/core/services/entry.service';
-import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
+import { BaseResourceFormDirective } from 'src/app/shared/components/base-resource-form/base-resource-form.directive';
 import {
   enumOptions,
   ptBRDateLocale,
@@ -18,7 +18,7 @@ import {
   styleUrls: ['./entry-form.component.css'],
 })
 export class EntryFormComponent
-  extends BaseResourceFormComponent<Entry>
+  extends BaseResourceFormDirective<Entry>
   implements OnInit
 {
   public ptBR = ptBRDateLocale();
@@ -26,11 +26,11 @@ export class EntryFormComponent
   public categoryList: Category[] = [];
 
   constructor(
-    protected _injector: Injector,
-    protected _service: EntryService,
-    protected _categoryService: CategoryService
+    protected injector: Injector,
+    protected service: EntryService,
+    protected categoryService: CategoryService
   ) {
-    super(new Entry(), _service, Entry.fromJson, _injector);
+    super(new Entry(), service, Entry.fromJson, injector);
   }
 
   ngOnInit(): void {
@@ -38,10 +38,10 @@ export class EntryFormComponent
     super.ngOnInit();
   }
 
-  protected toSavePattern() {
+  protected toSavePattern(): Entry {
     moment.locale('pt-br');
     const formValue = this.resourceForm.getRawValue();
-    let amountUS = parseFloat(formValue.amount).toFixed(2).toString();
+    const amountUS = parseFloat(formValue.amount).toFixed(2).toString();
     return {
       ...formValue,
       date: moment(formValue.date).format('L').toString(),
@@ -59,17 +59,17 @@ export class EntryFormComponent
     };
   }
 
-  protected loadCategories() {
-    this._categoryService.getAll().subscribe(
+  protected loadCategories(): void {
+    this.categoryService.getAll().subscribe(
       (data) => (this.categoryList = data),
       (error) => alert('Erro ao carregar as categorias')
     );
   }
 
-  protected createForm() {
+  protected createForm(): void {
     this.resourceForm = this.fb.group({
       id: [{ value: null, disabled: this.isEdit }, Validators.required],
-      name: [null, Validators.required],
+      name: [null, [Validators.required, Validators.minLength(3)]],
       desc: [null],
       type: [null, Validators.required],
       amount: [null, Validators.required],

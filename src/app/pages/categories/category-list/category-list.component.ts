@@ -1,42 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import { Component, Injector } from '@angular/core';
 import { Category } from 'src/app/core/models/category.model';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { BaseResourceListDirective } from 'src/app/shared/components/base-resource-list/base-resource-list.directive';
 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.css'],
 })
-export class CategoryListComponent implements OnInit {
-  public categories: Category[];
-  public currentCategory: Category;
-
+export class CategoryListComponent extends BaseResourceListDirective<Category> {
   constructor(
-    private _service: CategoryService,
-    private _confirmationService: ConfirmationService
-  ) {}
-
-  ngOnInit(): void {
-    this._service.getAll().subscribe(
-      (data) => (this.categories = data),
-      (error) => alert('Erro ao carregar a listagem')
-    );
-  }
-
-  public deleteCategory(id: number) {
-    this._confirmationService.confirm({
-      message: 'Deseja realmente excluir esse item?',
-      acceptLabel: 'Sim',
-      rejectLabel: 'Não',
-      accept: () => {
-        this._service
-          .delete(id)
-          .subscribe(
-            () =>
-              (this.categories = this.categories.filter((el) => el.id != id))
-          );
-      },
-    });
+    protected service: CategoryService,
+    protected injector: Injector
+  ) {
+    super(service, injector);
   }
 }

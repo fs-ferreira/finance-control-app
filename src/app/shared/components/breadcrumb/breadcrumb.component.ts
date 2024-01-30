@@ -23,13 +23,7 @@ export class BreadcrumbComponent implements OnInit {
         () => (this.bcItems = this.createBreadcrumbs(this.activatedRoute.root))
       );
   }
-
-  public changeActive(event: any) {
-    const menuItem = event?.item as MenuItem;
-
-    menuItem.disabled = true;
-  }
-
+  
   private createBreadcrumbs(
     route: ActivatedRoute,
     url: string = '#',
@@ -46,7 +40,7 @@ export class BreadcrumbComponent implements OnInit {
         .map((segment) => segment.path)
         .join('/');
 
-      if (routeURL !== '') {
+        if (routeURL !== '') {
         url += `/${routeURL}`;
       }
 
@@ -54,8 +48,7 @@ export class BreadcrumbComponent implements OnInit {
         child.snapshot.data[BreadcrumbComponent.ROUTE_DATA_BREADCRUMB];
       if (label) {
         breadcrumbs.push({ label, url });
-      }
-
+      }      
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
   }

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { BaseResourceFormComponent } from './base-resource-form.component';
+import { FormFieldErrorComponent } from './form-field-error.component';
 
-describe('BaseResourceFormComponent', () => {
-  let component: BaseResourceFormComponent;
-  let fixture: ComponentFixture<BaseResourceFormComponent>;
+describe('FormFieldErrorComponent', () => {
+  let component: FormFieldErrorComponent;
+  let fixture: ComponentFixture<FormFieldErrorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BaseResourceFormComponent ]
+      declarations: [ FormFieldErrorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BaseResourceFormComponent);
+    fixture = TestBed.createComponent(FormFieldErrorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

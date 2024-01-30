@@ -9,7 +9,7 @@ export const showErrorMessage = (customMessage?: string) => {
 };
 
 export const toDate = (dateStr) => {
-  var parts = dateStr.split('/');
+  const parts = dateStr.split('/');
   return new Date(parts[2], parts[1] - 1, parts[0]);
 };
 
@@ -64,9 +64,6 @@ export function enumOptions<T>(
   enumType: T
 ): Array<{ name: string; value: any }> {
   return Object.entries(enumType).map(([name, value]) => {
-    return {
-      name: name,
-      value: value,
-    };
+    return { name, value };
   });
 }

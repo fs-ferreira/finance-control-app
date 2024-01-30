@@ -3,7 +3,7 @@ import { Category } from './core/models/category.model';
 import { Entry, EntryType } from './core/models/entry.model';
 
 export class InMemoryDatabase implements InMemoryDbService {
-  createDb() {
+  createDb(): any {
     const categories: Category[] = [
       { id: 1, name: 'Moradia', desc: 'Pagamentos de Contas da Casa' },
       { id: 2, name: 'Saúde', desc: 'Plano de Saúde e Remédios' },
