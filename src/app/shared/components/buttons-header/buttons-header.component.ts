@@ -9,6 +9,6 @@ export interface ButtonModel {
   templateUrl: './buttons-header.component.html',
 })
 export class ButtonsHeaderComponent {
-  @Input('buttons')
+  @Input()
   buttons: ButtonModel[] = [];
 }

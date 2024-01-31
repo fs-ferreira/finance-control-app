@@ -1,0 +1,15 @@
+.header {
+  font-weight: 500;
+  height: 3vh;
+  margin-top: 0.75vh;
+}
+
+.filter-header {
+  font-weight: 500;
+  height: 4vh;
+  margin-top: 1.5vh;
+}
+
+.revenue-card{
+  background-color: black !important;
+}

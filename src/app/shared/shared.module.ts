@@ -25,6 +25,9 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { ButtonsHeaderComponent } from './components/buttons-header/buttons-header.component';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { FormFooterComponent } from './components/form-footer/form-footer.component';
+import { FieldsetModule } from 'primeng/fieldset';
+import { CardModule } from 'primeng/card';
+import {ChartModule} from 'primeng/chart';
 
 @Component({
   template: `<router-outlet></router-outlet> `,
@@ -39,7 +42,13 @@ export class EmptyComponent {}
     FormFieldErrorComponent,
     FormFooterComponent,
   ],
-  imports: [CommonModule, MenubarModule, BreadcrumbModule, ButtonModule],
+  imports: [
+    CommonModule,
+    MenubarModule,
+    BreadcrumbModule,
+    ButtonModule,
+    FieldsetModule,
+  ],
   providers: [ConfirmationService],
   exports: [
     MenubarModule,
@@ -67,6 +76,9 @@ export class EmptyComponent {}
     ButtonsHeaderComponent,
     FormFieldErrorComponent,
     FormFooterComponent,
+    FieldsetModule,
+    CardModule,
+    ChartModule,
   ],
 })
 export class SharedModule {}

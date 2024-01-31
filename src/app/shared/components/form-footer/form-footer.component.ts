@@ -17,7 +17,7 @@ import { Component, Input } from '@angular/core';
         pRipple
         type="button"
         class="mx-1"
-        label="Salvar"
+        label="{{submitLabel}}"
         [disabled]="isSubmiting || resourceForm.invalid"
         type="submit"
       ></button>
@@ -28,4 +28,5 @@ export class FormFooterComponent {
   @Input() onReset;
   @Input() isSubmiting;
   @Input() resourceForm;
+  @Input() submitLabel = 'Salvar';
 }

@@ -10,7 +10,7 @@ import { FormControl } from '@angular/forms';
   `,
 })
 export class FormFieldErrorComponent {
-  @Input('form-control')
+  @Input()
   formControl: FormControl;
 
   public get errorMessage(): string | null {
