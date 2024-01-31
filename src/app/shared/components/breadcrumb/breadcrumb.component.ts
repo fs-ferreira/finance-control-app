@@ -24,12 +24,6 @@ export class BreadcrumbComponent implements OnInit {
       );
   }
 
-  public changeActive(event: any) {
-    const menuItem = event?.item as MenuItem;
-
-    menuItem.disabled = true;
-  }
-
   private createBreadcrumbs(
     route: ActivatedRoute,
     url: string = '#',
@@ -55,7 +49,6 @@ export class BreadcrumbComponent implements OnInit {
       if (label) {
         breadcrumbs.push({ label, url });
       }
-
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
   }

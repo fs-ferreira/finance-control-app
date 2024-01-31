@@ -22,6 +22,12 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { ButtonsHeaderComponent } from './components/buttons-header/buttons-header.component';
+import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
+import { FormFooterComponent } from './components/form-footer/form-footer.component';
+import { FieldsetModule } from 'primeng/fieldset';
+import { CardModule } from 'primeng/card';
+import {ChartModule} from 'primeng/chart';
 
 @Component({
   template: `<router-outlet></router-outlet> `,
@@ -29,8 +35,20 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 export class EmptyComponent {}
 
 @NgModule({
-  declarations: [BreadcrumbComponent, EmptyComponent],
-  imports: [CommonModule, MenubarModule, BreadcrumbModule],
+  declarations: [
+    BreadcrumbComponent,
+    EmptyComponent,
+    ButtonsHeaderComponent,
+    FormFieldErrorComponent,
+    FormFooterComponent,
+  ],
+  imports: [
+    CommonModule,
+    MenubarModule,
+    BreadcrumbModule,
+    ButtonModule,
+    FieldsetModule,
+  ],
   providers: [ConfirmationService],
   exports: [
     MenubarModule,
@@ -55,6 +73,12 @@ export class EmptyComponent {}
     InputMaskModule,
     InputNumberModule,
     IMaskModule,
+    ButtonsHeaderComponent,
+    FormFieldErrorComponent,
+    FormFooterComponent,
+    FieldsetModule,
+    CardModule,
+    ChartModule,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,9 @@
+<button
+  *ngFor="let button of buttons"
+  pButton
+  pRipple
+  type="button"
+  icon="{{button.icon}}"
+  class="p-button-rounded p-button-text mr-2"
+  [routerLink]="[button.link]"
+></button>

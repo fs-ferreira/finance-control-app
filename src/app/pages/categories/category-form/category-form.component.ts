@@ -2,21 +2,21 @@ import { Component, Injector } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Category } from 'src/app/core/models/category.model';
 import { CategoryService } from 'src/app/core/services/category.service';
-import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
+import { BaseResourceFormDirective } from 'src/app/shared/components/base-resource-form/base-resource-form.directive';
 
 @Component({
   selector: 'app-category-form',
   templateUrl: './category-form.component.html',
 })
-export class CategoryFormComponent extends BaseResourceFormComponent<Category> {
+export class CategoryFormComponent extends BaseResourceFormDirective<Category> {
   constructor(
-    protected _injector: Injector,
-    protected _service: CategoryService
+    protected injector: Injector,
+    protected service: CategoryService
   ) {
-    super(new Category(), _service, Category.fromJson, _injector);
+    super(new Category(), service, Category.fromJson, injector);
   }
 
-  protected createForm() {
+  protected createForm(): void {
     this.resourceForm = this.fb.group({
       id: [{ value: null, disabled: this.isEdit }, Validators.required],
       name: [null, Validators.required],

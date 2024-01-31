@@ -4,15 +4,15 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import { BaseResourceModel } from '../../models/base-resource.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseResourceService } from '../../services/base-resource.service';
 import { switchMap } from 'rxjs/operators';
+import { BaseResourceModel } from '../../models/base-resource.model';
+import { BaseResourceService } from '../../services/base-resource.service';
 import { showErrorMessage, showSuccessMessage } from '../../utils/utils';
 
 @Directive()
-export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
+export abstract class BaseResourceFormDirective<T extends BaseResourceModel>
   implements OnInit, AfterContentChecked
 {
   public isEdit: boolean;
@@ -26,26 +26,26 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
 
   constructor(
     public resource: T,
-    protected _service: BaseResourceService<T>,
-    protected _jsonConverterFn: (data) => T,
-    protected _injector: Injector
+    protected service: BaseResourceService<T>,
+    protected jsonConverterFn: (data) => T,
+    protected injector: Injector
   ) {
-    this.activatedRoute = _injector.get(ActivatedRoute);
-    this.router = _injector.get(Router);
-    this.fb = _injector.get(FormBuilder);
+    this.activatedRoute = injector.get(ActivatedRoute);
+    this.router = injector.get(Router);
+    this.fb = injector.get(FormBuilder);
   }
-  
+
   ngOnInit(): void {
     this.checkIsEditable();
     this.createForm();
     this.loadData();
   }
-  
+
   ngAfterContentChecked(): void {
     this.setTitle();
   }
 
-  public submitForm() {
+  public submitForm(): void {
     this.isSubmiting = true;
     if (this.isEdit) {
       this.updateResource();
@@ -54,28 +54,27 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
     }
   }
 
-  public onReset() {
+  public onReset(): void {
     const notResetId = this.isEdit && {
       id: this.resourceForm.get('id').value,
     };
     this.resourceForm.reset(notResetId);
   }
 
-  protected checkIsEditable() {
+  protected checkIsEditable(): void {
     this.activatedRoute.params.subscribe((params) =>
-      params.id != 'new' ? (this.isEdit = true) : (this.isEdit = false)
+      params.id !== 'new' ? (this.isEdit = true) : (this.isEdit = false)
     );
   }
 
-  protected loadData() {
+  protected loadData(): void {
     if (this.isEdit) {
       this.activatedRoute.paramMap
-        .pipe(switchMap((params) => this._service.getById(+params.get('id'))))
+        .pipe(switchMap((params) => this.service.getById(+params.get('id'))))
         .subscribe((data: T) => {
           this.resource = data;
           this.resourceForm.patchValue(this.toFormPattern(data));
-        }),
-        (error) => alert('Erro ao carregar o formulário!');
+        });
     }
   }
 
@@ -91,7 +90,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
     return 'Item';
   }
 
-  protected setTitle() {
+  protected setTitle(): void {
     if (this.isEdit) {
       this.title = this.editHeaderTitle;
     } else {
@@ -99,34 +98,33 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
     }
   }
 
-  protected createResource() {
-    const resource: T = this._jsonConverterFn(this.toSavePattern());
+  protected createResource(): void {
+    const resource: T = this.jsonConverterFn(this.toSavePattern());
 
-    this._service.create(resource).subscribe(
+    this.service.create(resource).subscribe(
       () => this.successBehavior(),
       (error) => showErrorMessage()
     );
   }
 
-  protected updateResource() {
-    const resource: T = this._jsonConverterFn(this.toSavePattern());
+  protected updateResource(): void {
+    const resource: T = this.jsonConverterFn(this.toSavePattern());
 
-    this._service.update(resource).subscribe(
+    this.service.update(resource).subscribe(
       () => this.successBehavior(),
       (error) => showErrorMessage()
     );
   }
 
-  protected abstract createForm(): void;
-  
   protected toFormPattern(data: T): any {
     return data;
-  };
+  }
 
   protected toSavePattern(): any {
     return this.resourceForm.getRawValue();
-  };
+  }
 
+  protected abstract createForm(): void;
 
   private successBehavior(): void {
     showSuccessMessage();

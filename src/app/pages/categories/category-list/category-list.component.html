@@ -1,17 +1,12 @@
 <p-panel header="Categorias">
   <ng-template pTemplate="icons">
-    <button
-      pButton
-      pRipple
-      type="button"
-      icon="pi pi-plus"
-      class="p-button-rounded mr-2"
-      [routerLink]="['new']"
-    ></button>
+    <app-buttons-header
+      [buttons]="[{ icon: 'pi pi-plus', link: 'new' }]"
+    ></app-buttons-header>
   </ng-template>
 
   <p-table
-    [value]="categories"
+    [value]="resources"
     styleClass="p-datatable-striped"
     selectionMode="single"
     dataKey="id"
@@ -44,7 +39,7 @@
             type="button"
             icon="pi pi-trash"
             class="p-button-rounded p-button-text p-button-danger"
-            (click)="deleteCategory(category.id)"
+            (click)="deleteById(category.id)"
           ></button>
         </td>
       </tr>
