@@ -1,15 +1,8 @@
-.logo:hover {
+.logo:hover, fa-icon:hover {
   cursor: pointer;
 }
 
-::ng-deep p-menubar .p-menuitem-link-active {
-  border-bottom: 0.3vh inset #50b4ff !important;
-  border-radius: 0px !important;
-  -webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  box-shadow: none !important;
-}
-
-::ng-deep .p-menubar {
-  background-color: white !important;
+.icon{
+  margin-right: 2vw;
+  font-size: 1.3rem;
 }

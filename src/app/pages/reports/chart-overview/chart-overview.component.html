@@ -48,12 +48,13 @@
   </form>
 </p-panel>
 
-<p-panel>
+<p-panel [appLoading]="isLoading">
   <p-header>
     <div class="header">Relatórios</div>
   </p-header>
 
-  <div class="grid p-3">
+  <app-empty-state *ngIf="emptySearch"></app-empty-state>
+  <div class="grid p-3" *ngIf="!emptySearch">
     <div class="col-12 md:col-4">
       <p-card
         header="Receitas"
@@ -82,14 +83,14 @@
       </p-card>
     </div>
 
-    <div class="col-12 mt-5 md:col-6">
+    <div class="col-12 mt-5 md:col-6" *ngIf="entries.length">
       <p-chart
         type="bar"
         [data]="revenueChart"
         [options]="chartOptions"
       ></p-chart>
     </div>
-    <div class="col-12 mt-5 md:col-6">
+    <div class="col-12 mt-5 md:col-6" *ngIf="entries.length">
       <p-chart
         type="bar"
         [data]="expenseChart"

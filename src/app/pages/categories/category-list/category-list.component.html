@@ -1,11 +1,13 @@
-<p-panel header="Categorias">
+<p-panel header="Categorias" [appLoading]="isLoading">
   <ng-template pTemplate="icons">
     <app-buttons-header
       [buttons]="[{ icon: 'pi pi-plus', link: 'new' }]"
     ></app-buttons-header>
   </ng-template>
 
+  <app-empty-state *ngIf="!resources?.length && !isLoading"></app-empty-state>
   <p-table
+    *ngIf="resources?.length"
     [value]="resources"
     styleClass="p-datatable-striped"
     selectionMode="single"

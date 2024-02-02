@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { finalize, switchMap } from 'rxjs/operators';
 import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resource.service';
 import { showErrorMessage, showSuccessMessage } from '../../utils/utils';
@@ -17,6 +17,7 @@ export abstract class BaseResourceFormDirective<T extends BaseResourceModel>
 {
   public isEdit: boolean;
   public isSubmiting: boolean;
+  public isLoading: boolean;
   public resourceForm: FormGroup;
   public title: string;
 
@@ -69,10 +70,12 @@ export abstract class BaseResourceFormDirective<T extends BaseResourceModel>
 
   protected loadData(): void {
     if (this.isEdit) {
+      this.isLoading = true;
       this.activatedRoute.paramMap
         .pipe(switchMap((params) => this.service.getById(+params.get('id'))))
         .subscribe((data: T) => {
           this.resource = data;
+          this.isLoading = false;
           this.resourceForm.patchValue(this.toFormPattern(data));
         });
     }

@@ -19,6 +19,8 @@ export class ChartOverviewComponent implements OnInit {
   public tagList: string[] = [];
   public filterForm: FormGroup;
   public isCollapsed = true;
+  public emptySearch = false;
+  public isLoading = false
 
   public expenseTotal = 0;
   public revenueTotal = 0;
@@ -77,13 +79,20 @@ export class ChartOverviewComponent implements OnInit {
   }
 
   public generateReports(): void {
+    this.isLoading = true
     const { month, year } = this.filterForm.getRawValue();
     this.entryService
       .getByMonthAndYear(month.value, year.value)
       .subscribe((data) => {
+        this.isLoading = false
         this.entries = data;
         this.calcBalance();
         this.setCharts();
+        if (!data.length) {
+          this.emptySearch = true
+        } else {
+          this.emptySearch = false
+        }
       });
   }
 
