@@ -27,7 +27,12 @@ import { FormFieldErrorComponent } from './components/form-field-error/form-fiel
 import { FormFooterComponent } from './components/form-footer/form-footer.component';
 import { FieldsetModule } from 'primeng/fieldset';
 import { CardModule } from 'primeng/card';
-import {ChartModule} from 'primeng/chart';
+import { ChartModule } from 'primeng/chart';
+import { LoadingDirective } from './components/loading-state/loading.directive';
+import { EmptyStateComponent } from './components/empty-state/empty-state.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   template: `<router-outlet></router-outlet> `,
@@ -41,6 +46,8 @@ export class EmptyComponent {}
     ButtonsHeaderComponent,
     FormFieldErrorComponent,
     FormFooterComponent,
+    LoadingDirective,
+    EmptyStateComponent,
   ],
   imports: [
     CommonModule,
@@ -79,6 +86,10 @@ export class EmptyComponent {}
     FieldsetModule,
     CardModule,
     ChartModule,
+    LoadingDirective,
+    EmptyStateComponent,
+    ToggleButtonModule,
+    FontAwesomeModule,
   ],
 })
 export class SharedModule {}

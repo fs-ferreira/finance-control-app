@@ -2,6 +2,7 @@ import { Directive, Injector, OnInit } from '@angular/core';
 import { BaseResourceModel } from '../../models/base-resource.model';
 import { BaseResourceService } from '../../services/base-resource.service';
 import { ConfirmationService } from 'primeng/api';
+import { finalize } from 'rxjs/operators';
 
 @Directive()
 export abstract class BaseResourceListDirective<T extends BaseResourceModel>
@@ -9,6 +10,7 @@ export abstract class BaseResourceListDirective<T extends BaseResourceModel>
 {
   public resources: T[];
   public confirmationService: ConfirmationService;
+  public isLoading = false;
 
   constructor(
     protected service: BaseResourceService<T>,
@@ -18,10 +20,14 @@ export abstract class BaseResourceListDirective<T extends BaseResourceModel>
   }
 
   ngOnInit(): void {
-    this.service.getAll().subscribe(
-      (data) => (this.resources = data),
-      (error) => alert('Erro ao carregar a listagem')
-    );
+    this.isLoading = true;
+    this.service
+      .getAll()
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe(
+        (data) => (this.resources = data),
+        (error) => alert('Erro ao carregar a listagem')
+      );
   }
 
   public deleteById(id: number): void {

@@ -5,6 +5,7 @@ import { EntryService } from './services/entry.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDatabase } from '../in-memory-database';
+import { ThemeService } from './services/theme.service';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,7 @@ import { InMemoryDatabase } from '../in-memory-database';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
   ],
-  providers: [CategoryService, EntryService],
+  providers: [CategoryService, EntryService, ThemeService],
   exports: [HttpClientModule],
 })
 export class CoreModule {}
