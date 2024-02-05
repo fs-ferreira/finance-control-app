@@ -14,10 +14,10 @@ export class ThemeService {
     this.renderer = this.rendererFac.createRenderer(null, null);
   }
 
-  switchTheme(themeName: string, backgroundColor: string): void {
+  switchTheme(themeName: string, bgColor: string): void {
     const theme = this.document.getElementById('app-theme') as HTMLLinkElement;
     if (theme) {
-      this.renderer.setStyle(document.body, 'background-color', backgroundColor);
+      this.renderer.setStyle(document.body, 'background-color', bgColor);
       theme.href = themeName + '.css';
     }
   }

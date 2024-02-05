@@ -1,4 +1,4 @@
-<p-panel [header]="title">
+<p-panel [header]="title" [appLoading]="isLoading">
   <ng-template pTemplate="icons">
     <app-buttons-header
       [buttons]="[{ icon: 'pi pi-arrow-left', link: '/entries' }]"
