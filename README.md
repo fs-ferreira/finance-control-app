@@ -1,27 +1,45 @@
-# FinanceControlApp
+# Finance Control - Gestão de finanças mensais
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
+Esse projeto foi criado com o intuito de reforçar o padrão arquitetural master/detail, com list/form de entidades, através de uma aplicação que simula uma gestão de economias mensais. Cadastrando categorias de lançamentos e, os próprios lançamentos, posteriormente, monta-se então um conjuto de dados financeiros que pode ser vizualizado pela tela de relatórios com gráficos de Despesas x Receitas.
 
-## Development server
+## Live code
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+A versão de teste do app se encontra no domímio [Finance Control App](https://fs-ferreira.github.io/finance-control-app/#/reports), hospeado no GitHub Pages.
 
-## Code scaffolding
+## Dependências Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Esse projeto foi desenvolvido com:
+- Angular 11
+- Bootstrap 4
+- PrimeNG 10
+- PrimeFlex 4
+- Chart.js
+- moment.js
+- Font Awesome
+- toastr
+ 
+## Como rodar localmente a aplicação
 
-## Build
+1. Clone o repositório
+    
+    ```bash
+    git clone https://github.com/fs-ferreira/finance-control-app.git
+    ````
+2. Acesse o projeto
+   
+    ```bash
+    cd finance-control-app
+    ````
+3. Instale as depêndencias
+    
+    ```bash
+    npm install
+    ````
+4. Execute o programa
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    ```bash
+    ng s
+    ````
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para abrir sugerir melhorias e apontar possíveis issues no projeto.
